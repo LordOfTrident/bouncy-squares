@@ -102,8 +102,8 @@ void app_calc_shoot_info(app_t *p_app) {
 		.y = p_app->selected->y + p_app->selected->h / 2
 	};
 
-	p_app->dir      = atan2(p_app->mouse.y - center.h, p_app->mouse.x - center.w);
-	p_app->distance = sqrt((p_app->mouse.x - center.x) * (p_app->mouse.x - center.x) +
+	p_app->dir  = atan2(p_app->mouse.y - center.y, p_app->mouse.x - center.x);
+	p_app->dist = sqrt((p_app->mouse.x - center.x) * (p_app->mouse.x - center.x) +
 	                       (p_app->mouse.y - center.y) * (p_app->mouse.y - center.y));
 }
 
@@ -145,7 +145,7 @@ void app_render(app_t *p_app) {
 				.y = p_app->selected->y + p_app->selected->h / 2
 			};
 
-			float x = cos(p_app->dir) * p_app->distance, y = sin(p_app->dir) * p_app->distance;
+			float x = cos(p_app->dir) * p_app->dist, y = sin(p_app->dir) * p_app->dist;
 			SDL_RenderDrawLine(p_app->renderer, center.x, center.y, center.x + x, center.y + y);
 		}
 	}
@@ -254,8 +254,8 @@ void app_events(app_t *p_app) {
 			} else if (p_app->event.button.button == SDL_BUTTON_RIGHT) {
 				app_calc_shoot_info(p_app);
 
-				p_app->selected->vel_x = cos(p_app->dir) * p_app->distance / 4;
-				p_app->selected->vel_y = sin(p_app->dir) * p_app->distance / 4;
+				p_app->selected->vel_x = cos(p_app->dir) * p_app->dist / 4;
+				p_app->selected->vel_y = sin(p_app->dir) * p_app->dist / 4;
 
 				p_app->selected = NULL;
 			}

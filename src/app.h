@@ -12,7 +12,7 @@
     #define M_PI 3.14159265358979323846
 #endif
 
-#define TITLE "GOOD TITLE"
+#define TITLE "Bouncy squares"
 
 #define SCREEN_W 800
 #define SCREEN_H 450
@@ -51,7 +51,7 @@ typedef struct {
 
 	entity_t *selected;
 	bool      dragging;
-	float     dir, distance;
+	float     dir, dist;
 
 	bool quit, paused;
 } app_t;
