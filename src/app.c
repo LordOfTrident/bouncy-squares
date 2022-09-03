@@ -97,15 +97,12 @@ void app_run(app_t *p_app) {
 }
 
 void app_calc_shoot_info(app_t *p_app) {
-	p_app->dir = atan2(p_app->mouse.y - p_app->selected->y - p_app->selected->h / 2,
-	                   p_app->mouse.x - p_app->selected->x - p_app->selected->w / 2);
-
-
 	SDL_Point center = {
 		.x = p_app->selected->x + p_app->selected->w / 2,
 		.y = p_app->selected->y + p_app->selected->h / 2
 	};
 
+	p_app->dir      = atan2(p_app->mouse.y - center.h, p_app->mouse.x - center.w);
 	p_app->distance = sqrt((p_app->mouse.x - center.x) * (p_app->mouse.x - center.x) +
 	                       (p_app->mouse.y - center.y) * (p_app->mouse.y - center.y));
 }
