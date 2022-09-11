@@ -6,6 +6,7 @@
 #include <time.h>    /* time, time_t */
 #include <math.h>    /* cos, sin, atan2 */
 #include <string.h>  /* memset */
+#include <stdio.h>   /* snprintf */
 
 #include <SDL2/SDL.h>
 
